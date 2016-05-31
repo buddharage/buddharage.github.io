@@ -2,6 +2,5 @@
 .yo-rc.json
 node_modules
 *.log
-build/
 public/
 config.js
