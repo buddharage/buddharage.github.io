@@ -36,12 +36,6 @@ export default [
 		image_thumb: 'tcp-thumb.jpg',
 	},
 	{
-		id: 7,
-		title: 'Daddario XL Strings',
-		url: 'http://xlstrings.tumblr.com',
-		image_thumb: 'daddario-thumb.jpg',
-	},
-	{
 		id: 8,
 		title: 'Spring Breakers',
 		url: 'http://springbreakersmovie.com',
