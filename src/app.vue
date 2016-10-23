@@ -21,7 +21,7 @@
         <div class="bg"></div>
 
         <h1 class="site-logo">Thai Le</h1>
-        <div class="tagline">Web developer</div>
+        <div class="tagline">Web Developer</div>
 
         <div class="info">Brooklyn, NY</div>
 
