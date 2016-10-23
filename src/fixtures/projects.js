@@ -1,5 +1,17 @@
 export default [
 	{
+		id: 10,
+		title: 'VICELAND',
+		url: 'http://viceland.com',
+		image_thumb: 'viceland.jpg',
+	},
+	{
+		id: 10,
+		title: 'VICE Video',
+		url: 'http://video.vice.com',
+		image_thumb: 'vice-video.jpg',
+	},
+	{
 		id: 2,
 		title: 'Munchies',
 		url: 'http://munchies.vice.com',
@@ -16,12 +28,6 @@ export default [
 		title: 'Hello NSA',
 		url: 'http://nsa.motherboard.tv/',
 		image_thumb: 'hellonsa-thumb.jpg',
-	},
-	{
-		id: 4,
-		title: 'Vega Wang - Alpha Lyrae',
-		url: 'http://thecreatorsproject.vice.com/alphalyrae',
-		image_thumb: 'vega-wang-thumb.jpg',
 	},
 	{
 		id: 5,
