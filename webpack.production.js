@@ -14,6 +14,7 @@ module.exports = {
     loaders: [
       { test: /\.vue$/, loader: 'vue' },
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel'},
+      { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader'},
       { test: /\.(png|jpg)$/, loader: 'file' },
       { test: /\.(png|jpg)$/, loader: 'url?limit=10000'},
       { test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
@@ -38,6 +39,9 @@ module.exports = {
       allChunks: true
     })
   ],
+  sassLoader: {
+    includePaths: [path.resolve(__dirname, './src/scss'), path.resolve(__dirname, "./node_modules/compass-mixins/lib")]
+  },
   vue: {
     loaders: {
       css: ExtractTextPlugin.extract('css')

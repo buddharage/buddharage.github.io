@@ -1,36 +1,93 @@
 <template>
-  <div class="main container">
-    <input type="text" v-model="text" />
-    <div class="hello">Hello {{ text }}!</div>
-    <div class="text-center">
-      <dropdown>
-        <button type="button" class="btn btn-success" data-toggle="dropdown">
-          Welcome
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </dropdown>
+    <div class="main container">
+        <div v-if="isLoading" class="app-loading">
+            <div class="text">Loading</div>
+            <div class="loading-anim">
+                <div class="loading spin-1">
+                    <div class="loading spin-2">
+                        <div class="loading spin-3">
+                            <div class="loading spin-4">
+                                <div class="loading spin-5">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+
+
+    <header class="global-header">
+        <div class="bg"></div>
+
+        <h1 class="site-logo">Thai Le</h1>
+        <div class="tagline">Web developer</div>
+
+        <div class="info">Brooklyn, NY</div>
+
+        <div class="socials">
+            <a v-on:click="onSocialClick('facebook')" class="icon-facebook-white site-icon"></a>
+            <a v-on:click="onSocialClick('twitter')" class="icon-twitter-white site-icon"></a>
+            <a v-on:click="onSocialClick('linkedin')" class="icon-linkedin-white site-icon"></a>
+        </div>
+
+        <div class="cta"><span class="text">Projects</span> <span class="site-icon icon-down-arrow-white"></span></div>
+    </header>
+
+    <section class="projects-section main-section">
+        <ul>
+            <li v-for="project in projects" class="project">
+                <a href="{{ project.url }}">
+                    <div class="thumb">
+                        <img :src="'src/images/projects/' + project.image_thumb">
+                    </div>
+                    <div class="info">
+                        <h2>{{ project.title }}</h2>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </section>
 </template>
 
 <script>
-  import { dropdown } from 'vue-strap/dist/vue-strap.js'
-  export default {
-    replace: false,
-  	data() {
-      return {
-        text: 'vue'
-      }
-    },
-    components: {
-      dropdown
-    },
-  }
+    import './scss/style.scss';
+    import './images/icons/icons.data.svg.css';
+    import projects from './fixtures/projects';
+
+    export default {
+        replace: false,
+        data() {
+            return {
+                projects: projects
+            }
+        },
+        methods: {
+			onSocialClick: function(socialName) {
+                if(!socialName) {
+                    return;
+                }
+
+                var social;
+
+				window.ga("send", "event", "socials", "click", socialName);
+
+				switch(socialName) {
+					case 'facebook':
+						social = 'http://facebook.com/thai.viet.le';
+						break;
+					case 'twitter':
+						social = 'http://www.twitter.com/buddharage';
+						break;
+					case 'linkedin':
+						social = 'http://www.linkedin.com/in/thaivietle';
+						break;
+				}
+
+                if(social) {
+                    window.open(social);
+                }
+			},
+        }
+    }
 </script>
