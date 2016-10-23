@@ -1,5 +1,5 @@
 <template>
-    <div class="main container">
+    <div class="main-container">
         <div v-if="isLoading" class="app-loading">
             <div class="text">Loading</div>
             <div class="loading-anim">
@@ -7,47 +7,46 @@
                     <div class="loading spin-2">
                         <div class="loading spin-3">
                             <div class="loading spin-4">
-                                <div class="loading spin-5">
+                                <div class="loading spin-5"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <header ref="header" class="global-header">
+            <div class="bg"></div>
+
+            <h1 class="site-logo">Thai Le</h1>
+            <div class="tagline">Web Developer</div>
+
+            <div class="info">Brooklyn, NY</div>
+
+            <div class="socials">
+                <a v-on:click="onSocialClick('facebook')" class="icon-facebook-white site-icon"></a>
+                <a v-on:click="onSocialClick('twitter')" class="icon-twitter-white site-icon"></a>
+                <a v-on:click="onSocialClick('linkedin')" class="icon-linkedin-white site-icon"></a>
+            </div>
+
+            <div v-on:click="goToProjects" class="cta"><span class="text">Projects</span> <span class="site-icon icon-down-arrow-white"></span></div>
+        </header>
+
+        <section class="projects-section main-section">
+            <ul>
+                <li v-for="project in projects" class="project">
+                    <a :href="project.url" v-on:click.prevent="onProjectClick(project.title, project.url)">
+                        <div class="thumb">
+                            <img :src="'src/images/projects/' + project.image_thumb">
+                        </div>
+                        <div class="info">
+                            <h2>{{ project.title }}</h2>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </section>
     </div>
-
-
-    <header ref="header" class="global-header">
-        <div class="bg"></div>
-
-        <h1 class="site-logo">Thai Le</h1>
-        <div class="tagline">Web Developer</div>
-
-        <div class="info">Brooklyn, NY</div>
-
-        <div class="socials">
-            <a v-on:click="onSocialClick('facebook')" class="icon-facebook-white site-icon"></a>
-            <a v-on:click="onSocialClick('twitter')" class="icon-twitter-white site-icon"></a>
-            <a v-on:click="onSocialClick('linkedin')" class="icon-linkedin-white site-icon"></a>
-        </div>
-
-        <div v-on:click="goToProjects" class="cta"><span class="text">Projects</span> <span class="site-icon icon-down-arrow-white"></span></div>
-    </header>
-
-    <section class="projects-section main-section">
-        <ul>
-            <li v-for="project in projects" class="project">
-                <a :href="project.url" v-on:click.prevent="onProjectClick(project.title, project.url)">
-                    <div class="thumb">
-                        <img :src="'src/images/projects/' + project.image_thumb">
-                    </div>
-                    <div class="info">
-                        <h2>{{ project.title }}</h2>
-                    </div>
-                </a>
-            </li>
-        </ul>
-    </section>
 </template>
 
 <script>
@@ -80,10 +79,6 @@
                 isLoading: false,
                 projects: projects
             }
-        },
-        ready() {
-                var mainHeaderHeight = this.$refs;
-                console.log('header height: ', mainHeaderHeight);
         },
         methods: {
             goToProjects() {
