@@ -26,7 +26,7 @@ module.exports = {
   sassLoader: {
     includePaths: [path.resolve(__dirname, './src/scss'), path.resolve(__dirname, "./node_modules/compass-mixins/lib")]
   },
-  devtool: '#source-map',
+  devtool: 'source-map',
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.js'

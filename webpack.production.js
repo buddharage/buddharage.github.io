@@ -47,5 +47,10 @@ module.exports = {
     loaders: {
       css: ExtractTextPlugin.extract('css')
     }
+  },
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.js'
+    }
   }
 }
