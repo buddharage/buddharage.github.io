@@ -16,7 +16,9 @@
 		font-size: 0.5em;
 
 		.loading {
-			@include animate(spin, 5s, infinite, linear);
+			animation-name: spin;
+			animation-duration: 5s;
+			animation-iteration-count: infinite;
 			background-color: transparent;
 			border: $loadingBorderWidth solid transparent;
 			@include border-radius(50%);
@@ -54,20 +56,20 @@
 	}
 }
 
-@include animation(spin) {
+@keyframes spin {
 	0% {
-		@include transform(rotate(0deg));
+		transform: rotate(0deg);
 	}
 	25% {
-		@include transform(rotate(160deg));
+		transform: rotate(160deg);
 	}
 	50% {
-		@include transform(rotate(0deg));
+		transform: rotate(0deg);
 	}
 	75% {
-		@include transform(rotate(360deg));
+		transform: rotate(360deg);
 	}
 	100% {
-		@include transform(rotate(0deg));
+		transform: rotate(0deg);
 	}
 }

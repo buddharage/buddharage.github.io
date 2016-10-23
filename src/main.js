@@ -6,7 +6,10 @@ Vue.config.debug = process.env.NODE_ENV !== 'production'
 
 Vue.use(VueRouter)
 
-const router = new VueRouter()
-const App = Vue.extend(app)
+const router = new VueRouter({
+  routes: [
+    {path: '/', component: app}
+  ]
+});
 
-router.start(App, 'body')
+const mainApp = new Vue({router}).$mount('#main-app');

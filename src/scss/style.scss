@@ -168,7 +168,7 @@ body {
 	}
 }
 
-@include animation(drop) {
+@keyframes drop {
 	0% {
 		opacity: 0;
 		@include translate(-50%, -6em);
@@ -179,7 +179,7 @@ body {
 	}
 }
 
-@include animation(dropRepeat) {
+@keyframes dropRepeat {
 	0% {
 		@include translate(-50%, -0.45em);
 	}

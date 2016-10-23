@@ -17,7 +17,7 @@
     </div>
 
 
-    <header class="global-header">
+    <header ref="header" class="global-header">
         <div class="bg"></div>
 
         <h1 class="site-logo">Thai Le</h1>
@@ -31,13 +31,13 @@
             <a v-on:click="onSocialClick('linkedin')" class="icon-linkedin-white site-icon"></a>
         </div>
 
-        <div class="cta"><span class="text">Projects</span> <span class="site-icon icon-down-arrow-white"></span></div>
+        <div v-on:click="goToProjects" class="cta"><span class="text">Projects</span> <span class="site-icon icon-down-arrow-white"></span></div>
     </header>
 
     <section class="projects-section main-section">
         <ul>
             <li v-for="project in projects" class="project">
-                <a href="{{ project.url }}">
+                <a :href="project.url" v-on:click.prevent="onProjectClick(project.title, project.url)">
                     <div class="thumb">
                         <img :src="'src/images/projects/' + project.image_thumb">
                     </div>
@@ -55,15 +55,58 @@
     import './images/icons/icons.data.svg.css';
     import projects from './fixtures/projects';
 
-    export default {
+    function scrollAnimate(top, scrollDuration) {
+        var scrollStep = top / (scrollDuration / 15);
+        var body = document.body;
+        var html = document.documentElement;
+        var docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+        var winHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+        var scrollInterval = setInterval(() => {
+            if (window.scrollY != top
+                && (body.scrollTop + winHeight < docHeight)
+            ) {
+                window.scrollBy(0, scrollStep);
+            } else {
+                clearInterval(scrollInterval);
+            }
+        }, 15 );
+    }
+
+    module.exports = {
         replace: false,
         data() {
             return {
+                isLoading: false,
                 projects: projects
             }
         },
+        ready() {
+                var mainHeaderHeight = this.$refs;
+                console.log('header height: ', mainHeaderHeight);
+        },
         methods: {
-			onSocialClick: function(socialName) {
+            goToProjects() {
+                if(!this.$refs.header) {
+                    return;
+                }
+
+                scrollAnimate(parseInt(this.$refs.header.offsetHeight, 10), 300);
+
+				window.ga("send", "event", "cta", "click", "go to projects");
+            },
+            onProjectClick(title, url) {
+                if(!title || !url) {
+                    return;
+                }
+
+				window.ga("send", "event", "projects", "click", title);
+
+                if(url) {
+                    window.open(url);
+                }
+            },
+			onSocialClick(socialName) {
                 if(!socialName) {
                     return;
                 }
@@ -89,5 +132,5 @@
                 }
 			},
         }
-    }
+    };
 </script>
