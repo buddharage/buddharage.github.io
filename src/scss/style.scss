@@ -245,16 +245,33 @@ body {
 					@include display-box();
 					@include box-align(center);
 					@include box-pack(center);
+					opacity: 0;
 					height: 100%;
 					left: 0;
 					position: absolute;
 					top: 0;
+					transition: all 0.2s ease-out;
 				}
 
 				h2 {
 					font-size: 1em;
 					font-weight: normal;
 					margin: 0;
+					transform: scale(0.9);
+					transition: all 0.2s ease-out;
+				}
+			}
+
+			&:hover .info {
+				@include respond-to($mobileBP) {
+					opacity: 1;
+					transform: scale(1);
+				}
+
+				h2 {
+					@include respond-to($mobileBP) {
+						transform: scale(1);
+					}
 				}
 			}
 		}
