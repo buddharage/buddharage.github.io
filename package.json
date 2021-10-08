@@ -1,39 +1,50 @@
 {
-  "name": "thai-le-portfolio",
-  "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "webpack-dev-server --inline --hot --quiet",
-    "build": "rm -rf build/* && webpack --progress --hide-modules --config webpack.production.js"
-  },
+  "name": "gatsby-starter-default",
+  "private": true,
+  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "version": "0.1.0",
+  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "vue": "^2.0.3",
-    "vue-router": "^2.0.1",
-    "vue-strap": "^1.0.2"
+    "gatsby": "^3.13.1",
+    "gatsby-plugin-image": "^1.13.0",
+    "gatsby-plugin-manifest": "^3.13.0",
+    "gatsby-plugin-offline": "^4.13.0",
+    "gatsby-plugin-react-helmet": "^4.13.0",
+    "gatsby-plugin-sharp": "^3.13.0",
+    "gatsby-source-filesystem": "^3.13.0",
+    "gatsby-transformer-sharp": "^3.13.0",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "babel-core": "^6.1.21",
-    "babel-loader": "^6.1.0",
-    "babel-plugin-transform-runtime": "^6.1.18",
-    "babel-preset-es2015": "^6.1.18",
-    "babel-runtime": "^6.11.6",
-    "compass-mixins": "^0.12.10",
-    "css-loader": "^0.25.0",
-    "extract-text-webpack-plugin": "^1.0.1",
-    "file-loader": "^0.9.0",
-    "node-sass": "^3.10.1",
-    "raw-loader": "^0.5.1",
-    "sass-loader": "^4.0.2",
-    "style-loader": "^0.13.0",
-    "url-loader": "^0.5.7",
-    "vue-hot-reload-api": "^2.0.6",
-    "vue-html-loader": "^1.0.0",
-    "vue-loader": "^9.7.0",
-    "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.12.1"
+    "autoprefixer": "^10.3.7",
+    "gatsby-plugin-postcss": "^4.14.0",
+    "gh-pages": "^3.2.3",
+    "postcss": "^8.3.9",
+    "prettier": "2.4.1",
+    "tailwindcss": "^2.2.16"
   },
-  "peerDependencies": {
-    "bootstrap": "^3.3.5"
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "0BSD",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "deploy": "gatsby build && gh-pages -d public -b main",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "gatsby develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }

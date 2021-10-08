@@ -1,7 +1,9 @@
-yarn.lock
 .DS_Store
-.yo-rc.json
-node_modules
-*.log
-public/
-config.js
+*.swp
+node_modules/*
+.sass-cache/*
+assets/.sass-cache/*
+assets/css/*
+z_dev/*
+*.sublime-project
+*.sublime-workspace
