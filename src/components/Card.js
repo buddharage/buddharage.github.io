@@ -12,7 +12,6 @@ const Card = ({ siteTitle }) => (
             quality={95}
             formats={["auto", "webp", "avif"]}
             alt="Thai Le"
-            style={{ marginBottom: `1.45rem` }}
           />
         </div>
       </div>

@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
     title: `Thai Le | Web Developer`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    description: `Web Developer based in Brooklyn, NY`,
+    author: `Thai Le`,
+    siteUrl: `https://thaivietle.com`,
   },
   plugins: [
     "gatsby-plugin-postcss",
