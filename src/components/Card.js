@@ -2,10 +2,10 @@ import * as React from "react"
 import { StaticImage } from "gatsby-plugin-image"
 
 const Card = ({ siteTitle }) => (
-  <div class="w-full h-screen flex items-center justify-center bg-gray-200">
-    <div class="relative w-96 h-auto bg-gray-400 rounded-md pt-24 pb-8 px-4 shadow-md hover:shadow-lg transition flex flex-col items-center">
-      <div class="absolute rounded-full bg-gray-100 w-28 h-28 p-2 z-10 -top-8 shadow-lg hover:shadow-xl transition">
-        <div class="rounded-full bg-black w-full h-full overflow-auto">
+  <div class="w-full h-screen flex items-center justify-center bg-black">
+    <div class="relative w-96 h-auto bg-gray-700 pt-24 pb-8 px-4 shadow-md hover:shadow-lg transition flex flex-col items-center">
+      <div class="absolute bg-gray-100 w-28 h-28 p-1 z-10 -top-8 shadow-lg hover:shadow-xl transition">
+        <div class="bg-black w-full h-full overflow-auto">
           <StaticImage
             src="../images/thai.jpg"
             width={300}
@@ -15,15 +15,16 @@ const Card = ({ siteTitle }) => (
           />
         </div>
       </div>
-      <p class="font-bold text-gray-100 text-lg">Thai Le</p>
+      <h1 class="font-bold text-gray-100 text-lg">Thai Le</h1>
       <p class="text-center text-gray-200 mt-2 leading-relaxed">
         Web Developer
       </p>
-      <ul class="flex flex-row gap-2 mt-4">
+      <div class="flex flex-row gap-2 mt-4">
         <a
           href="https://instagram.com/buddharage"
           target="_blank"
           rel="noreferrer"
+          aria-label="My Instagram"
         >
           <svg
             class="h-10 w-10 text-gray-300 hover:text-gray-100 transition"
@@ -44,6 +45,7 @@ const Card = ({ siteTitle }) => (
           href="https://www.linkedin.com/in/thaivietle"
           target="_blank"
           rel="noreferrer"
+          aria-label="My LinkedIn"
         >
           <svg
             class="h-10 w-10 text-gray-300 hover:text-gray-100 transition"
@@ -66,6 +68,7 @@ const Card = ({ siteTitle }) => (
           href="https://github.com/buddharage"
           target="_blank"
           rel="noreferrer"
+          aria-label="My Github"
         >
           <svg
             class="h-10 w-10 text-gray-300 hover:text-gray-100 transition"
@@ -92,7 +95,7 @@ const Card = ({ siteTitle }) => (
             </g>
           </svg>
         </a>
-      </ul>
+      </div>
     </div>
   </div>
 )
