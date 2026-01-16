@@ -34,7 +34,7 @@ function App() {
 				<img
 					src="/profile.jpg"
 					alt="Thai Le"
-					className="w-48 h-48 mx-auto mb-8 object-cover border-4 border-slate-800"
+					className="w-48 h-48 mx-auto mb-8 object-cover object-top border-4 border-slate-800"
 				/>
 				<h1 className="text-4xl font-bold text-white mb-2">Thai Le</h1>
 				<p className="text-slate-400 mb-8">Brooklyn, NY</p>
