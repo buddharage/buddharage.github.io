@@ -37,7 +37,8 @@ function App() {
           alt="Thai Le"
           className="w-48 h-48 rounded-full mx-auto mb-8 object-cover border-4 border-slate-800"
         />
-        <h1 className="text-4xl font-bold text-white mb-8">Thai Le</h1>
+        <h1 className="text-4xl font-bold text-white mb-2">Thai Le</h1>
+        <p className="text-slate-400 mb-8">Brooklyn, NY</p>
         <div className="flex justify-center gap-6">
           {socials.map((link) => (
             <a
