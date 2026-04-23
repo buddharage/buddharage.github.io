@@ -3,6 +3,7 @@ function App() {
 		Languages: ["TypeScript", "JavaScript", "Node.js", "PHP"],
 		Frontend: ["React", "Next.js", "Vue", "GraphQL (Apollo)", "HTML5", "CSS"],
 		"Backend & Infrastructure": ["AWS (Lambda, Fargate)", "PostgreSQL", "Kafka"],
+		AI: ["Anthropic", "Gemini", "OpenAI"],
 	};
 
 	const experience = [
@@ -11,9 +12,10 @@ function App() {
 			role: "Staff Software Engineer",
 			period: "Sep 2019 – Present",
 			highlights: [
-				"Led the architectural refactor of the core website from Shopify to a TypeScript and Next.js stack",
-				"Successfully increased Core Web Vitals by an average of 80% across all primary metrics",
-				"Specialized in high-scale web solutions using Apollo GraphQL and AWS",
+				"Increased Core Web Vitals by an average of 80% across all metrics",
+				"Refactored the website from Shopify to TypeScript and Next.js hosted on Vercel. Helped move product data from Shopify to Postgres and served data using a GraphQL Node.js API service on AWS with Apollo, improving performance and user experience",
+				"Created an AI-powered E2E testing suite to ensure website functionality and reliability with natural language instructions and self-healing features",
+				"Helped create an AI-powered engineering support bot to analyze site and product data issues using an MCP server to enable codebase and database context, cutting engineer debug time by over 50%",
 			],
 		},
 		{
