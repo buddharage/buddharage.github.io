@@ -3,6 +3,7 @@ function App() {
 		Languages: ["TypeScript", "JavaScript", "Node.js", "PHP"],
 		Frontend: ["React", "Next.js", "Vue", "GraphQL (Apollo)", "HTML5", "CSS"],
 		"Backend & Infrastructure": ["AWS (Lambda, Fargate)", "PostgreSQL", "Kafka"],
+		AI: ["Anthropic", "Gemini", "OpenAI"],
 	};
 
 	const experience = [
