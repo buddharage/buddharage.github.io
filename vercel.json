@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    { "source": "/stardew", "destination": "https://stardew-dashboard-peach.vercel.app/stardew" },
+    { "source": "/stardew/:path*", "destination": "https://stardew-dashboard-peach.vercel.app/stardew/:path*" },
+    { "source": "/api/stardew/:path*", "destination": "https://stardew-dashboard-peach.vercel.app/api/stardew/:path*" }
+  ]
+}
