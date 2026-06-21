@@ -38,3 +38,5 @@ coverage
 
 # Cache
 .cache
+.vercel
+.vercel
