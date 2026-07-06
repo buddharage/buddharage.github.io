@@ -1,5 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/travel/", "destination": "/travel" },
+    { "source": "/travel/:path+/", "destination": "/travel/:path+" }
+  ],
   "rewrites": [
     { "source": "/stardew", "destination": "https://stardew-dashboard-peach.vercel.app/stardew" },
     { "source": "/stardew/:path*", "destination": "https://stardew-dashboard-peach.vercel.app/stardew/:path*" },
