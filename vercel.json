@@ -1,8 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/travel", "destination": "/travel/" }
+  ],
   "rewrites": [
     { "source": "/stardew", "destination": "https://stardew-dashboard-peach.vercel.app/stardew" },
     { "source": "/stardew/:path*", "destination": "https://stardew-dashboard-peach.vercel.app/stardew/:path*" },
-    { "source": "/api/stardew/:path*", "destination": "https://stardew-dashboard-peach.vercel.app/api/stardew/:path*" }
+    { "source": "/api/stardew/:path*", "destination": "https://stardew-dashboard-peach.vercel.app/api/stardew/:path*" },
+    { "source": "/travel/:path*", "destination": "https://travel-six-ashy.vercel.app/:path*" }
   ]
 }
