@@ -2,13 +2,16 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     { "source": "/travel/", "destination": "/travel" },
-    { "source": "/travel/:path+/", "destination": "/travel/:path+" }
+    { "source": "/travel/:path+/", "destination": "/travel/:path+" },
+    { "source": "/watch/", "destination": "/watch" }
   ],
   "rewrites": [
     { "source": "/stardew", "destination": "https://stardew-dashboard-peach.vercel.app/stardew" },
     { "source": "/stardew/:path*", "destination": "https://stardew-dashboard-peach.vercel.app/stardew/:path*" },
     { "source": "/api/stardew/:path*", "destination": "https://stardew-dashboard-peach.vercel.app/api/stardew/:path*" },
     { "source": "/travel", "destination": "https://travel-six-ashy.vercel.app/travel" },
-    { "source": "/travel/:path*", "destination": "https://travel-six-ashy.vercel.app/travel/:path*" }
+    { "source": "/travel/:path*", "destination": "https://travel-six-ashy.vercel.app/travel/:path*" },
+    { "source": "/watch", "destination": "https://watch-roulette-mu.vercel.app/watch" },
+    { "source": "/watch/:path*", "destination": "https://watch-roulette-mu.vercel.app/watch/:path*" }
   ]
 }
