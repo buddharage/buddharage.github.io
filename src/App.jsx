@@ -2,7 +2,14 @@ function App() {
 	const skills = {
 		Languages: ["TypeScript", "JavaScript", "Node.js", "PHP"],
 		Frontend: ["React", "Next.js", "Vue", "GraphQL (Apollo)", "HTML5", "CSS"],
-		"Backend & Infrastructure": ["AWS (Lambda, Fargate)", "PostgreSQL", "Kafka"],
+		"Backend & Infrastructure": [
+			"AWS (Lambda, Fargate)",
+			"PostgreSQL",
+			"Kafka",
+			"LangGraph",
+			"DynamoDB",
+			"Amazon Bedrock",
+		],
 		AI: ["Anthropic", "Gemini", "OpenAI"],
 	};
 
