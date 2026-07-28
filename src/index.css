@@ -9,3 +9,93 @@
     @apply bg-slate-950 text-slate-100 font-sans;
   }
 }
+
+/* Print: the dark theme doesn't survive paper, so flip to dark-on-white */
+@media print {
+  html {
+    /* rem-based Tailwind sizes all scale down with this */
+    font-size: 12px;
+  }
+
+  body {
+    background: #fff;
+    color: #0f172a;
+  }
+
+  h1,
+  h2,
+  h3,
+  .text-white {
+    color: #0f172a;
+  }
+
+  .text-blue-400 {
+    color: #1d4ed8;
+  }
+
+  .text-slate-300,
+  .text-slate-400 {
+    color: #334155;
+  }
+
+  .text-slate-500,
+  .text-slate-600 {
+    color: #64748b;
+  }
+
+  .border-slate-700,
+  .border-slate-800 {
+    border-color: #cbd5e1;
+  }
+
+  /* skill pills: background won't print, use an outline instead */
+  .bg-slate-800 {
+    background: transparent;
+    border: 1px solid #cbd5e1;
+  }
+
+  /* timeline dots */
+  .bg-blue-400 {
+    background: #1d4ed8;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* tighten vertical rhythm for paper */
+  .py-16 {
+    padding-block: 1.5rem;
+  }
+
+  .py-12 {
+    padding-block: 1rem;
+  }
+
+  .mb-16 {
+    margin-bottom: 1.5rem;
+  }
+
+  .mt-16 {
+    margin-top: 1rem;
+  }
+
+  /* keep each job entry on one page, and headings with their content */
+  .border-l-2 {
+    break-inside: avoid;
+  }
+
+  h2 {
+    break-after: avoid;
+  }
+
+  /* links aren't clickable on paper, print the URLs */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    color: #64748b;
+  }
+}
