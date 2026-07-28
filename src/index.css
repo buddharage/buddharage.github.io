@@ -12,14 +12,57 @@
 
 /* Print: the dark theme doesn't survive paper, so flip to dark-on-white */
 @media print {
+  @page {
+    size: letter;
+    margin: 1cm 1.5cm;
+  }
+
   html {
     /* rem-based Tailwind sizes all scale down with this */
-    font-size: 12px;
+    font-size: 10.5px;
   }
 
   body {
     background: #fff;
     color: #0f172a;
+  }
+
+  /* paper minus margins is narrower than the md breakpoint (768px), which
+     would collapse everything to the stacked mobile layout — force desktop */
+  .md\:flex-row {
+    flex-direction: row;
+  }
+
+  .md\:items-start {
+    align-items: flex-start;
+  }
+
+  .md\:items-center {
+    align-items: center;
+  }
+
+  .md\:justify-between {
+    justify-content: space-between;
+  }
+
+  .md\:justify-start {
+    justify-content: flex-start;
+  }
+
+  .md\:text-left {
+    text-align: left;
+  }
+
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .md\:mt-0 {
+    margin-top: 0;
   }
 
   h1,
@@ -61,21 +104,59 @@
     -webkit-print-color-adjust: exact;
   }
 
-  /* tighten vertical rhythm for paper */
+  /* tighten vertical rhythm so everything fits one page */
   .py-16 {
-    padding-block: 1.5rem;
+    padding-block: 0.5rem;
   }
 
   .py-12 {
-    padding-block: 1rem;
+    padding-block: 0.5rem;
+  }
+
+  .py-8 {
+    padding-block: 0.25rem;
   }
 
   .mb-16 {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .mb-6 {
+    margin-bottom: 0.5rem;
   }
 
   .mt-16 {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .mt-6 {
+    margin-top: 0.5rem;
+  }
+
+  .gap-12 {
+    gap: 1.5rem;
+  }
+
+  .gap-8 {
+    gap: 1.25rem;
+  }
+
+  .mt-3 {
+    margin-top: 0.25rem;
+  }
+
+  .space-y-8 > :not(:last-child) {
+    margin-block-start: 0;
+    margin-block-end: 0.5rem;
+  }
+
+  .space-y-2 > :not(:last-child) {
+    margin-block-start: 0;
+    margin-block-end: 0.3rem;
+  }
+
+  .leading-relaxed {
+    line-height: 1.35;
   }
 
   /* keep each job entry on one page, and headings with their content */
