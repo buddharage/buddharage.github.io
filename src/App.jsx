@@ -6,23 +6,35 @@ function App() {
 			"AWS (Lambda, Fargate)",
 			"PostgreSQL",
 			"Kafka",
-			"LangGraph",
 			"DynamoDB",
-			"Amazon Bedrock",
 		],
-		AI: ["Anthropic", "Gemini", "OpenAI"],
+		"AI / LLM": [
+			"LangGraph",
+			"Amazon Bedrock",
+			"MCP",
+			"Anthropic API",
+			"OpenAI API",
+			"Gemini API",
+		],
 	};
 
 	const experience = [
 		{
 			company: "Bombas",
 			role: "Staff Software Engineer",
-			period: "Sep 2019 – Present",
+			period: "2021 – Present",
 			highlights: [
-				"Increased Core Web Vitals by an average of 80% across all metrics",
-				"Refactored the website from Shopify to TypeScript and Next.js hosted on Vercel. Helped move product data from Shopify to Postgres and served data using a GraphQL Node.js API service on AWS with Apollo, improving performance and user experience",
-				"Created an AI-powered E2E testing suite to ensure website functionality and reliability with natural language instructions and self-healing features",
-				"Helped create an AI-powered engineering support bot to analyze site and product data issues using an MCP server to enable codebase and database context, cutting engineer debug time by over 50%",
+				"Improved Core Web Vitals by an average of 80% across all metrics",
+				"Built an AI-powered E2E testing suite with natural-language test authoring and self-healing, ensuring site functionality and reliability",
+				"Built an AI-powered engineering support bot that analyzes site and product data issues through an MCP server with codebase and database context, cutting engineer debug time by over 50%",
+			],
+		},
+		{
+			company: "Bombas",
+			role: "Senior Software Engineer",
+			period: "Sep 2019 – 2021",
+			highlights: [
+				"Led the replatform from Shopify to TypeScript and Next.js on Vercel, moving product data into Postgres served by a GraphQL (Apollo) Node.js API on AWS, improving performance and user experience",
 			],
 		},
 		{
@@ -30,8 +42,8 @@ function App() {
 			role: "Senior Software Engineer",
 			period: "Oct 2017 – Jul 2019",
 			highlights: [
-				"Refactored the internal CMS from PHP to React using GraphQL, significantly improving performance and the editorial user experience",
-				"Leveraged Amazon Web Services (AWS) to support large-scale magazine platforms",
+				"Refactored the internal CMS from PHP to React and GraphQL, significantly improving performance and the editorial user experience",
+				"Supported large-scale magazine platforms on AWS",
 			],
 		},
 		{
@@ -39,8 +51,7 @@ function App() {
 			role: "Senior Web Developer",
 			period: "Nov 2015 – Oct 2017",
 			highlights: [
-				"Developed large-scale web applications across various distribution networks",
-				"Utilized a modern stack including GraphQL, Vue, React, and PHP",
+				"Developed large-scale web applications across VICE's distribution networks with GraphQL, Vue, React, and PHP",
 			],
 		},
 		{
@@ -48,15 +59,15 @@ function App() {
 			role: "Senior Web Developer",
 			period: "Nov 2014 – Nov 2015",
 			highlights: [
-				"Implemented and architected mobile and desktop web solutions using JavaScript and HTML5",
+				"Architected mobile and desktop web solutions in JavaScript and HTML5",
 			],
 		},
 		{
-			company: "VICE Media, Inc.",
+			company: "VICE Media",
 			role: "Senior Web Developer",
 			period: "Sep 2012 – Nov 2014",
 			highlights: [
-				"Built digital presence on web and mobile platforms using PHP frameworks to enhance international reach",
+				"Built VICE's digital presence on web and mobile using PHP frameworks, expanding international reach",
 			],
 		},
 	];
@@ -91,17 +102,22 @@ function App() {
 						<img
 							src="/profile.jpg"
 							alt="Thai Le"
-							className="w-32 h-32 object-cover object-top border-2 border-slate-700"
+							className="w-32 h-32 object-cover object-top border-2 border-slate-700 print:hidden"
 						/>
 						<div className="text-center md:text-left">
 							<h1 className="text-4xl font-bold text-white mb-2">Thai Le</h1>
 							<p className="text-xl text-blue-400 mb-4">Staff Software Engineer</p>
 							<p className="text-slate-400 max-w-xl leading-relaxed">
-								Technical Lead with deep expertise in modern full-stack technologies.
-								Specialized in architecting web solutions that deliver exceptional user
-								experience and high performance.
+								Staff engineer with 13+ years building consumer web platforms for
+								Bombas, Hearst Magazines, and VICE. Led Bombas's replatform from
+								Shopify to TypeScript and Next.js, and now builds AI-powered tooling
+								for testing and engineering support.
 							</p>
-							<div className="flex justify-center md:justify-start gap-4 mt-6">
+							<p className="hidden print:block mt-2 text-sm text-slate-400">
+								thai.viet.le@gmail.com · Brooklyn, NY · github.com/buddharage ·
+								linkedin.com/in/thaivietle
+							</p>
+							<div className="flex justify-center md:justify-start gap-4 mt-6 print:hidden">
 								{socials.map((link) => (
 									<a
 										key={link.name}
@@ -125,7 +141,7 @@ function App() {
 				{/* Skills Section */}
 				<section className="mb-16">
 					<h2 className="text-2xl font-bold text-white mb-6">Technical Skills</h2>
-					<div className="grid md:grid-cols-3 gap-6">
+					<div className="grid md:grid-cols-4 gap-6">
 						{Object.entries(skills).map(([category, items]) => (
 							<div key={category}>
 								<h3 className="text-sm font-semibold text-blue-400 uppercase tracking-wider mb-3">
@@ -155,7 +171,7 @@ function App() {
 								key={index}
 								className="border-l-2 border-slate-700 pl-6 relative"
 							>
-								<div className="absolute w-3 h-3 bg-blue-400 -left-[7px] top-1"></div>
+								<div className="absolute w-3 h-3 rounded-full bg-blue-400 -left-[7px] top-1"></div>
 								<div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
 									<div>
 										<h3 className="text-lg font-semibold text-white">
@@ -167,14 +183,10 @@ function App() {
 										{job.period}
 									</span>
 								</div>
-								<ul className="space-y-2 mt-3">
+								<ul className="list-disc pl-4 marker:text-slate-600 space-y-2 mt-3">
 									{job.highlights.map((highlight, i) => (
-										<li
-											key={i}
-											className="text-slate-400 text-sm leading-relaxed flex gap-2"
-										>
-											<span className="text-slate-600 mt-1">•</span>
-											<span>{highlight}</span>
+										<li key={i} className="text-slate-400 text-sm leading-relaxed">
+											{highlight}
 										</li>
 									))}
 								</ul>
@@ -211,7 +223,7 @@ function App() {
 			</main>
 
 			{/* Footer */}
-			<footer className="border-t border-slate-800 mt-16">
+			<footer className="border-t border-slate-800 mt-16 print:hidden">
 				<div className="max-w-4xl mx-auto px-6 py-8 text-center text-slate-500 text-sm">
 					Brooklyn, NY
 				</div>

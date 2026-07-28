@@ -19,7 +19,7 @@
 
   html {
     /* rem-based Tailwind sizes all scale down with this */
-    font-size: 10.5px;
+    font-size: 11px;
   }
 
   body {
@@ -37,8 +37,9 @@
     align-items: flex-start;
   }
 
+  /* top-align so the date sits on the role title's line instead of floating */
   .md\:items-center {
-    align-items: center;
+    align-items: flex-start;
   }
 
   .md\:justify-between {
@@ -57,8 +58,8 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .md\:grid-cols-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .md\:mt-0 {
@@ -83,6 +84,10 @@
 
   .text-slate-500,
   .text-slate-600 {
+    color: #64748b;
+  }
+
+  li::marker {
     color: #64748b;
   }
 
@@ -166,17 +171,5 @@
 
   h2 {
     break-after: avoid;
-  }
-
-  /* links aren't clickable on paper, print the URLs */
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  a[href^="http"]::after {
-    content: " (" attr(href) ")";
-    font-size: 0.85em;
-    color: #64748b;
   }
 }
