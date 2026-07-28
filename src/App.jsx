@@ -1,12 +1,22 @@
 function App() {
 	const skills = {
 		Languages: ["TypeScript", "JavaScript", "Node.js", "PHP"],
-		Frontend: ["React", "Next.js", "Vue", "GraphQL (Apollo)", "HTML5", "CSS"],
+		Frontend: [
+			"React",
+			"Next.js",
+			"Vue",
+			"GraphQL (Apollo)",
+			"Tailwind CSS",
+			"Vite",
+			"Playwright",
+		],
 		"Backend & Infrastructure": [
 			"AWS (Lambda, Fargate)",
 			"PostgreSQL",
 			"Kafka",
 			"DynamoDB",
+			"Supabase",
+			"Vercel",
 		],
 		"AI / LLM": [
 			"LangGraph",
@@ -69,6 +79,31 @@ function App() {
 			highlights: [
 				"Built VICE's digital presence on web and mobile using PHP frameworks, expanding international reach",
 			],
+		},
+	];
+
+	const projects = [
+		{
+			name: "Arya",
+			description:
+				"AI back-office agent for a bar: ingests invoices from Gmail, syncs QuickBooks, costs recipes against Toast POS sales, and tracks inventory, all operated through a remote MCP server.",
+		},
+		{
+			name: "Watch Roulette",
+			description:
+				"Movie-night randomizer for the household, served to claude.ai as a remote MCP server with per-persona taste profiles. Vercel, Supabase, and TMDB.",
+		},
+		{
+			name: "Travel Planner",
+			href: "/travel",
+			description:
+				"Trip planner with live FX-rate tracking, backed by Supabase.",
+		},
+		{
+			name: "Stardew Dashboard",
+			href: "/stardew",
+			description:
+				"Companion dashboard for a self-hosted Stardew Valley co-op server.",
 		},
 	];
 
@@ -190,6 +225,32 @@ function App() {
 										</li>
 									))}
 								</ul>
+							</div>
+						))}
+					</div>
+				</section>
+
+				{/* Projects — web only, print stays a one-page resume */}
+				<section className="mb-16 print:hidden">
+					<h2 className="text-2xl font-bold text-white mb-6">Projects</h2>
+					<div className="grid md:grid-cols-2 gap-6">
+						{projects.map((project) => (
+							<div key={project.name}>
+								<h3 className="text-lg font-semibold text-white">
+									{project.href ? (
+										<a
+											href={project.href}
+											className="hover:text-blue-400 transition-colors"
+										>
+											{project.name}
+										</a>
+									) : (
+										project.name
+									)}
+								</h3>
+								<p className="text-slate-400 text-sm leading-relaxed mt-1">
+									{project.description}
+								</p>
 							</div>
 						))}
 					</div>
