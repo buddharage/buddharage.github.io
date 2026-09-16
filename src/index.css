@@ -10,6 +10,46 @@
   }
 }
 
+/* Hero: slide-in only, no fade. Anything at opacity 0 on first paint is
+   skipped as an LCP candidate, which would push LCP out by the stagger. */
+@keyframes rise {
+  from {
+    transform: translateY(16px);
+  }
+}
+
+.hero-rise {
+  animation: rise 0.6s ease-out both;
+}
+
+/* Reveal: elements start hidden and fade up once App's IntersectionObserver
+   marks them visible. Stagger siblings with --reveal-delay. */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise {
+    animation: none;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* Print: the dark theme doesn't survive paper, so flip to dark-on-white */
 @media print {
   @page {
@@ -25,6 +65,17 @@
   body {
     background: #fff;
     color: #0f172a;
+  }
+
+  .hero-rise {
+    animation: none;
+  }
+
+  /* the observer never fires for print, so undo the hidden starting state */
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 
   /* paper minus margins is narrower than the md breakpoint (768px), which

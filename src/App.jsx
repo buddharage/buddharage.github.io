@@ -1,4 +1,26 @@
+import { useEffect } from "react";
+
 function App() {
+	useEffect(() => {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (entry.isIntersecting) {
+						entry.target.classList.add("is-visible");
+						observer.unobserve(entry.target);
+					}
+				}
+			},
+			// a huge top margin counts anything already scrolled past as visible,
+			// so a fast scroll or jump can't leave an element stuck hidden
+			{ rootMargin: "10000px 0px 0px 0px", threshold: 0.15 },
+		);
+		for (const el of document.querySelectorAll("[data-reveal]")) {
+			observer.observe(el);
+		}
+		return () => observer.disconnect();
+	}, []);
+
 	const skills = {
 		Languages: ["TypeScript", "JavaScript", "Node.js", "PHP"],
 		Frontend: [
@@ -135,14 +157,29 @@ function App() {
 				<div className="max-w-4xl mx-auto px-6 py-16">
 					<div className="flex flex-col md:flex-row items-center md:items-start gap-8">
 						<img
-							src="/profile.jpg"
+							src="/profile.webp"
 							alt="Thai Le"
-							className="w-32 h-32 object-cover object-top border-2 border-slate-700 print:hidden"
+							width="256"
+							height="256"
+							className="hero-rise w-32 h-32 object-cover object-top border-2 border-slate-700 print:hidden"
 						/>
 						<div className="text-center md:text-left">
-							<h1 className="text-4xl font-bold text-white mb-2">Thai Le</h1>
-							<p className="text-xl text-blue-400 mb-4">Staff Software Engineer</p>
-							<p className="text-slate-400 max-w-xl leading-relaxed">
+							<h1
+								style={{ animationDelay: "100ms" }}
+								className="hero-rise text-4xl font-bold text-white mb-2"
+							>
+								Thai Le
+							</h1>
+							<p
+								style={{ animationDelay: "200ms" }}
+								className="hero-rise text-xl text-blue-400 mb-4"
+							>
+								Staff Software Engineer
+							</p>
+							<p
+								style={{ animationDelay: "300ms" }}
+								className="hero-rise text-slate-400 max-w-xl leading-relaxed"
+							>
 								Staff engineer with 13+ years building consumer web platforms for
 								Bombas, Hearst Magazines, and VICE. Led Bombas's replatform from
 								Shopify to TypeScript and Next.js, and now builds AI-powered tooling
@@ -152,14 +189,17 @@ function App() {
 								thai.viet.le@gmail.com · Brooklyn, NY · github.com/buddharage ·
 								linkedin.com/in/thaivietle
 							</p>
-							<div className="flex justify-center md:justify-start gap-4 mt-6 print:hidden">
+							<div
+								style={{ animationDelay: "400ms" }}
+								className="hero-rise flex justify-center md:justify-start gap-4 mt-6 print:hidden"
+							>
 								{socials.map((link) => (
 									<a
 										key={link.name}
 										href={link.href}
 										target="_blank"
 										rel="noopener noreferrer"
-										className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors"
+										className="flex items-center gap-2 text-slate-400 hover:text-white hover:-translate-y-0.5 transition"
 										aria-label={link.name}
 									>
 										{link.icon}
@@ -175,10 +215,16 @@ function App() {
 			<main className="max-w-4xl mx-auto px-6 py-12">
 				{/* Skills Section */}
 				<section className="mb-16">
-					<h2 className="text-2xl font-bold text-white mb-6">Technical Skills</h2>
+					<h2 data-reveal className="text-2xl font-bold text-white mb-6">
+						Technical Skills
+					</h2>
 					<div className="grid md:grid-cols-4 gap-6">
-						{Object.entries(skills).map(([category, items]) => (
-							<div key={category}>
+						{Object.entries(skills).map(([category, items], index) => (
+							<div
+								key={category}
+								data-reveal
+								style={{ "--reveal-delay": `${index * 100}ms` }}
+							>
 								<h3 className="text-sm font-semibold text-blue-400 uppercase tracking-wider mb-3">
 									{category}
 								</h3>
@@ -186,7 +232,7 @@ function App() {
 									{items.map((skill) => (
 										<span
 											key={skill}
-											className="px-3 py-1 bg-slate-800 text-slate-300 text-sm"
+											className="px-3 py-1 bg-slate-800 text-slate-300 text-sm hover:bg-slate-700 hover:text-white hover:-translate-y-0.5 transition"
 										>
 											{skill}
 										</span>
@@ -199,11 +245,14 @@ function App() {
 
 				{/* Experience Section */}
 				<section className="mb-16">
-					<h2 className="text-2xl font-bold text-white mb-6">Experience</h2>
+					<h2 data-reveal className="text-2xl font-bold text-white mb-6">
+						Experience
+					</h2>
 					<div className="space-y-8">
 						{experience.map((job, index) => (
 							<div
 								key={index}
+								data-reveal
 								className="border-l-2 border-slate-700 pl-6 relative"
 							>
 								<div className="absolute w-3 h-3 rounded-full bg-blue-400 -left-[7px] top-1"></div>
@@ -214,7 +263,7 @@ function App() {
 										</h3>
 										<p className="text-blue-400">{job.company}</p>
 									</div>
-									<span className="text-slate-500 text-sm mt-1 md:mt-0">
+									<span className="text-slate-400 text-sm mt-1 md:mt-0">
 										{job.period}
 									</span>
 								</div>
@@ -232,10 +281,16 @@ function App() {
 
 				{/* Projects — web only, print stays a one-page resume */}
 				<section className="mb-16 print:hidden">
-					<h2 className="text-2xl font-bold text-white mb-6">Projects</h2>
+					<h2 data-reveal className="text-2xl font-bold text-white mb-6">
+						Projects
+					</h2>
 					<div className="grid md:grid-cols-2 gap-6">
-						{projects.map((project) => (
-							<div key={project.name}>
+						{projects.map((project, index) => (
+							<div
+								key={project.name}
+								data-reveal
+								style={{ "--reveal-delay": `${index * 100}ms` }}
+							>
 								<h3 className="text-lg font-semibold text-white">
 									{project.href ? (
 										<a
@@ -258,7 +313,7 @@ function App() {
 
 				{/* Education & Volunteering */}
 				<section className="grid md:grid-cols-2 gap-12">
-					<div>
+					<div data-reveal>
 						<h2 className="text-2xl font-bold text-white mb-6">Education</h2>
 						<div>
 							<h3 className="text-lg font-semibold text-white">
@@ -269,11 +324,11 @@ function App() {
 							</p>
 						</div>
 					</div>
-					<div>
+					<div data-reveal style={{ "--reveal-delay": "100ms" }}>
 						<h2 className="text-2xl font-bold text-white mb-6">Volunteering</h2>
 						<div>
 							<h3 className="text-lg font-semibold text-white">Code Nation</h3>
-							<p className="text-slate-500 text-sm mb-2">Nov 2015 – Jan 2024</p>
+							<p className="text-slate-400 text-sm mb-2">Nov 2015 – Jan 2024</p>
 							<p className="text-slate-400 text-sm leading-relaxed">
 								Taught fundamental coding skills and provided professional
 								experiences to students in under-resourced schools.
@@ -285,7 +340,7 @@ function App() {
 
 			{/* Footer */}
 			<footer className="border-t border-slate-800 mt-16 print:hidden">
-				<div className="max-w-4xl mx-auto px-6 py-8 text-center text-slate-500 text-sm">
+				<div className="max-w-4xl mx-auto px-6 py-8 text-center text-slate-400 text-sm">
 					Brooklyn, NY
 				</div>
 			</footer>
