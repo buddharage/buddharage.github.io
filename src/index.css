@@ -147,9 +147,11 @@
     border-color: #cbd5e1;
   }
 
-  /* tighten vertical rhythm so everything fits one page */
+  /* tightened from the default Tailwind spacing so everything fits one
+     page, but loose enough to breathe. A one-page resume with ~90pt of
+     blank space at the bottom read as cramped up top for no reason. */
   .py-16 {
-    padding-block: 0.5rem;
+    padding-block: 0.75rem;
   }
 
   .py-12 {
@@ -161,11 +163,11 @@
   }
 
   .mb-16 {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   .mb-6 {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
   }
 
   .mt-16 {
@@ -185,21 +187,21 @@
   }
 
   .mt-3 {
-    margin-top: 0.25rem;
+    margin-top: 0.4rem;
   }
 
   .space-y-8 > :not(:last-child) {
     margin-block-start: 0;
-    margin-block-end: 0.5rem;
+    margin-block-end: 1rem;
   }
 
   .space-y-2 > :not(:last-child) {
     margin-block-start: 0;
-    margin-block-end: 0.3rem;
+    margin-block-end: 0.4rem;
   }
 
   .leading-relaxed {
-    line-height: 1.35;
+    line-height: 1.42;
   }
 
   /* keep each job entry on one page, and headings with their content */
