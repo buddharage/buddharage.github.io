@@ -106,6 +106,16 @@ function App() {
 
 	const projects = [
 		{
+			name: "Bowie",
+			description:
+				"Remote MCP assistant for claude.ai: a LangGraph classifier routes each request to a specialist. The first specialist builds Google Slides decks from your own template and learns from every build and piece of feedback.",
+		},
+		{
+			name: "Bumblebee",
+			description:
+				"AI-driven E2E testing platform: write a test goal in plain English and an agent drives a real browser to complete it, or record a session and have it converted into a test. Next.js dashboard, Node.js agent.",
+		},
+		{
 			name: "Arya",
 			description:
 				"AI back-office agent for a bar: ingests invoices from Gmail, syncs QuickBooks, costs recipes against Toast POS sales, and tracks inventory, all operated through a remote MCP server.",
@@ -114,6 +124,11 @@ function App() {
 			name: "Watch Roulette",
 			description:
 				"Movie-night randomizer for the household, served to claude.ai as a remote MCP server with per-persona taste profiles. Vercel, Supabase, and TMDB.",
+		},
+		{
+			name: "Bitchin' Hour",
+			description:
+				"Karaoke and trivia party app: a TV browser hosts playback and trivia while players join from their phones by scanning a QR code. Next.js and Supabase.",
 		},
 		{
 			name: "Travel Planner",
@@ -282,7 +297,7 @@ function App() {
 				{/* Projects — web only, print stays a one-page resume */}
 				<section className="mb-16 print:hidden">
 					<h2 data-reveal className="text-2xl font-bold text-white mb-6">
-						Projects
+						Side Projects
 					</h2>
 					<div className="grid md:grid-cols-2 gap-6">
 						{projects.map((project, index) => (
