@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
 	useEffect(() => {
@@ -21,9 +21,33 @@ function App() {
 		return () => observer.disconnect();
 	}, []);
 
+	// Email and phone live only in this state, set for the print window and
+	// unset right after, so they never sit in the page's DOM for scrapers to read.
+	const [showPrintContact, setShowPrintContact] = useState(false);
+
+	// Chrome's print-to-PDF names the file after document.title; swap it only
+	// for the print window so the browser tab keeps its normal portfolio title.
+	useEffect(() => {
+		const originalTitle = document.title;
+		const enterPrint = () => {
+			document.title = "Thai Le - Resume";
+			setShowPrintContact(true);
+		};
+		const exitPrint = () => {
+			document.title = originalTitle;
+			setShowPrintContact(false);
+		};
+		window.addEventListener("beforeprint", enterPrint);
+		window.addEventListener("afterprint", exitPrint);
+		return () => {
+			window.removeEventListener("beforeprint", enterPrint);
+			window.removeEventListener("afterprint", exitPrint);
+		};
+	}, []);
+
 	const skills = {
 		Languages: ["TypeScript", "JavaScript", "Node.js", "PHP"],
-		Frontend: [
+		"Frontend & Testing": [
 			"React",
 			"Next.js",
 			"Vue",
@@ -54,17 +78,17 @@ function App() {
 		{
 			company: "Bombas",
 			role: "Staff Software Engineer",
-			period: "2021 – Present",
+			period: "Sep 2021 – Present",
 			highlights: [
 				"Improved Core Web Vitals by an average of 80% across all metrics",
-				"Built an AI-powered E2E testing suite with natural-language test authoring and self-healing, ensuring site functionality and reliability",
+				"Built an AI-powered E2E testing suite with natural-language test authoring and self-healing",
 				"Built an AI-powered engineering support bot that analyzes site and product data issues through an MCP server with codebase and database context, cutting engineer debug time by over 50%",
 			],
 		},
 		{
 			company: "Bombas",
 			role: "Senior Software Engineer",
-			period: "Sep 2019 – 2021",
+			period: "Sep 2019 – Sep 2021",
 			highlights: [
 				"Led the replatform from Shopify to TypeScript and Next.js on Vercel, moving product data into Postgres served by a GraphQL (Apollo) Node.js API on AWS, improving performance and user experience",
 			],
@@ -195,13 +219,14 @@ function App() {
 								style={{ animationDelay: "300ms" }}
 								className="hero-rise text-slate-400 max-w-xl leading-relaxed"
 							>
-								Staff engineer with 13+ years building consumer web platforms for
+								Staff engineer with 14+ years building consumer web platforms for
 								Bombas, Hearst Magazines, and VICE. Led Bombas's replatform from
 								Shopify to TypeScript and Next.js, and now builds AI-powered tooling
 								for testing and engineering support.
 							</p>
 							<p className="hidden print:block mt-2 text-sm text-slate-400">
-								thai.viet.le@gmail.com · Brooklyn, NY · github.com/buddharage ·
+								{showPrintContact ? "347-671-7384 · thai.viet.le@gmail.com · " : ""}
+								thaivietle.com · Brooklyn, NY · github.com/buddharage ·
 								linkedin.com/in/thaivietle
 							</p>
 							<div
@@ -243,7 +268,7 @@ function App() {
 								<h3 className="text-sm font-semibold text-blue-400 uppercase tracking-wider mb-3">
 									{category}
 								</h3>
-								<div className="flex flex-wrap gap-2">
+								<div className="flex flex-wrap gap-2 print:hidden">
 									{items.map((skill) => (
 										<span
 											key={skill}
@@ -253,6 +278,11 @@ function App() {
 										</span>
 									))}
 								</div>
+								{/* comma-separated line: an ATS parser reads the pill grid
+								    out of order and loses which skill belongs to which category */}
+								<p className="hidden print:block text-sm text-slate-400">
+									{items.join(", ")}
+								</p>
 							</div>
 						))}
 					</div>
@@ -268,9 +298,12 @@ function App() {
 							<div
 								key={index}
 								data-reveal
-								className="border-l-2 border-slate-700 pl-6 relative"
+								className="border-l-2 border-slate-700 pl-6 relative print:static"
 							>
-								<div className="absolute w-3 h-3 rounded-full bg-blue-400 -left-[7px] top-1"></div>
+								{/* absolute positioning pulls this dot's paint order ahead of the
+								    entry's flow text, which an ATS text-extractor follows literally
+								    and reads before "Experience" instead of inside it; drop it for print */}
+								<div className="absolute w-3 h-3 rounded-full bg-blue-400 -left-[7px] top-1 print:hidden"></div>
 								<div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
 									<div>
 										<h3 className="text-lg font-semibold text-white">

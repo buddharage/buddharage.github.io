@@ -147,19 +147,6 @@
     border-color: #cbd5e1;
   }
 
-  /* skill pills: background won't print, use an outline instead */
-  .bg-slate-800 {
-    background: transparent;
-    border: 1px solid #cbd5e1;
-  }
-
-  /* timeline dots */
-  .bg-blue-400 {
-    background: #1d4ed8;
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
-
   /* tighten vertical rhythm so everything fits one page */
   .py-16 {
     padding-block: 0.5rem;
